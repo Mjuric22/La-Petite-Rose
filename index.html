@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Petite Rose – cvjećarnica i poklon galerija u Koprivnici. Svježe i sušeno cvijeće, buketi, dekoracije za vjenčanja i evente." />
+  <title>La Petite Rose | Cvjećarnica i poklon galerija – Koprivnica</title>
+
+  <!-- Google Fonts: Cormorant Garant (headings) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================
+       RESET & BASE
+    ============================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:      #e8a4b0;
+      --rose-dark: #c4687a;
+      --peach:     #f5d6c8;
+      --cream:     #fdf6f0;
+      --brown:     #6b4c3b;
+      --text:      #3d2b23;
+      --muted:     #9a7b72;
+      --border:    rgba(107, 76, 59, 0.12);
+      --white:     #ffffff;
+      --green:     #25d366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garant', serif;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* =============================
+       NAVIGACIJA
+    ============================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      height: 60px;
+      background: rgba(253, 246, 240, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(232, 164, 176, 0.25);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--rose-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--brown);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rose-dark); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(232, 164, 176, 0.25);
+      z-index: 99;
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu ul li { border-bottom: 1px solid rgba(232, 164, 176, 0.15); }
+    .mobile-menu ul li a {
+      display: block;
+      padding: 0.8rem 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* =============================
+       HERO
+    ============================= */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 3rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('slike/img3.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.68);
+      transform: scale(1.03);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(42, 26, 20, 0.82) 0%,
+        rgba(42, 26, 20, 0.1) 55%,
+        transparent 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1.8rem;
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232, 164, 176, 0.85);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      color: var(--peach);
+      font-style: italic;
+    }
+
+    .hero-tagline {
+      color: rgba(255,255,255,0.82);
+      font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 420px;
+      line-height: 1.65;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.45rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--rose-dark);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(196,104,122,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 22px rgba(196,104,122,0.5); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.65);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1.5rem;
+      z-index: 2;
+      color: rgba(255,255,255,0.5);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      animation: bounce 2.2s infinite;
+    }
+    .scroll-hint svg { width: 16px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* =============================
+       SECTIONS SHARED
+    ============================= */
+    section { padding: 4.5rem 1.5rem; }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--rose-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--brown);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-divider {
+      width: 44px;
+      height: 2px;
+      background: linear-gradient(to right, var(--rose-dark), var(--peach));
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =============================
+       O NAMA
+    ============================= */
+    .about { background: var(--white); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 700px) {
+      .about-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .about-img-wrap { position: relative; }
+
+    .about-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 36px rgba(107, 76, 59, 0.16);
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .about-text p strong {
+      color: var(--brown);
+      font-weight: 500;
+    }
+
+    /* Stats counters */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--rose-dark);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* =============================
+       PONUDA — Project Showcase style
+    ============================= */
+    .ponuda { background: var(--cream); }
+
+    .ponuda-header { margin-bottom: 0.5rem; }
+
+    /* Desktop floating image preview */
+    .ponuda-preview {
+      position: fixed;
+      pointer-events: none;
+      z-index: 50;
+      width: 260px;
+      height: 180px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(60, 30, 20, 0.25);
+      opacity: 0;
+      transform: scale(0.88);
+      transition: opacity 0.28s cubic-bezier(.4,0,.2,1), transform 0.28s cubic-bezier(.4,0,.2,1);
+      top: 0; left: 0;
+      will-change: transform;
+    }
+    .ponuda-preview.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .ponuda-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    /* Hide floating preview on touch devices */
+    @media (hover: none) {
+      .ponuda-preview { display: none !important; }
+    }
+
+    /* Rows */
+    .ponuda-rows { margin-top: 1.5rem; }
+
+    .ponuda-row {
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .ponuda-row:last-child { border-bottom: 1px solid var(--border); }
+
+    .ponuda-row-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.25rem 0.4rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    /* Subtle hover bg on desktop */
+    @media (hover: hover) {
+      .ponuda-row:hover .ponuda-row-inner {
+        background: rgba(245, 214, 200, 0.25);
+        border-radius: 10px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 -0.6rem;
+      }
+    }
+
+    .ponuda-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 400;
+      min-width: 22px;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .ponuda-row-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ponuda-row-text h3 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      font-weight: 500;
+      color: var(--brown);
+      position: relative;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+
+    /* Animated underline on hover (desktop) */
+    .ponuda-row-text h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 1px;
+      width: 0;
+      background: var(--rose-dark);
+      transition: width 0.3s ease;
+    }
+    @media (hover: hover) {
+      .ponuda-row:hover .ponuda-row-text h3::after { width: 100%; }
+    }
+    .ponuda-row.active .ponuda-row-text h3::after { width: 100%; }
+
+    .ponuda-row-text p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .ponuda-row-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-weight: 400;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+
+    .ponuda-arrow {
+      font-size: 1rem;
+      color: var(--rose-dark);
+      transition: transform 0.25s, opacity 0.25s;
+      opacity: 0;
+      flex-shrink: 0;
+    }
+
+    @media (hover: hover) {
+      .ponuda-row:hover .ponuda-arrow { opacity: 1; transform: translate(3px, -2px); }
+    }
+    .ponuda-row.active .ponuda-arrow { opacity: 1; transform: rotate(90deg); }
+
+    /* Mobile expand image */
+    .ponuda-mobile-img {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease, padding 0.3s ease;
+    }
+    .ponuda-row.active .ponuda-mobile-img {
+      max-height: 260px;
+      padding-bottom: 1.2rem;
+    }
+    .ponuda-mobile-img img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Hide mobile images on desktop (use floating preview instead) */
+    @media (hover: hover) {
+      .ponuda-mobile-img { display: none; }
+    }
+
+    /* =============================
+       GALERIJA
+    ============================= */
+    .galerija { background: var(--white); }
+
+    .galerija-header { text-align: center; }
+    .galerija-header .section-divider { margin: 0 auto 2rem; }
+
+    .gallery-grid {
+      columns: 2;
+      column-gap: 0.6rem;
+    }
+
+    @media (min-width: 600px) {
+      .gallery-grid { columns: 3; }
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 0.6rem;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.38s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(196, 104, 122, 0);
+      transition: background 0.3s;
+      pointer-events: none;
+    }
+    .gallery-item:hover::after { background: rgba(196, 104, 122, 0.12); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(15, 7, 5, 0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90svh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 2.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem 0.5rem;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: white; }
+
+    /* =============================
+       KONTAKT
+    ============================= */
+    .kontakt { background: var(--cream); }
+
+    .kontakt-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .kontakt-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .kontakt-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .kontakt-item-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--peach);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .kontakt-item-text strong {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .kontakt-item-text span,
+    .kontakt-item-text a {
+      font-size: 0.97rem;
+      color: var(--brown);
+      line-height: 1.55;
+    }
+    .kontakt-item-text a:hover { color: var(--rose-dark); }
+
+    .radno-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.25rem 1rem;
+      margin-top: 0.15rem;
+    }
+    .radno-grid span { font-size: 0.9rem; color: var(--brown); }
+    .radno-grid .muted { color: var(--muted); }
+
+    .kontakt-map iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 4px 24px rgba(107,76,59,0.1);
+    }
+
+    @media (min-width: 700px) {
+      .kontakt-map iframe { height: 100%; min-height: 360px; }
+    }
+
+    .kontakt-cta-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn-wa {
+      background: var(--green);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(37,211,102,0.28);
+      justify-content: center;
+    }
+    .btn-call {
+      background: var(--rose-dark);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(196,104,122,0.28);
+      justify-content: center;
+    }
+
+    /* =============================
+       FOOTER — Multi-column
+    ============================= */
+    footer {
+      position: relative;
+      background: var(--brown);
+      overflow: hidden;
+    }
+
+    /* Radial gradient glow at top */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(245,214,200,0.5), transparent);
+      filter: blur(1px);
+    }
+
+    /* Top edge blur line */
+    footer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 33%;
+      height: 1px;
+      background: rgba(245, 214, 200, 0.4);
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .footer-inner {
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+      }
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--peach);
+      line-height: 1;
+    }
+
+    .footer-brand p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 200px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-social a:hover {
+      background: rgba(245, 214, 200, 0.15);
+      color: var(--peach);
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .footer-cols { grid-template-columns: 1fr 1fr; }
+    }
+
+    .footer-col h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+
+    .footer-col ul li a,
+    .footer-col ul li span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      transition: color 0.2s;
+      line-height: 1.4;
+    }
+    .footer-col ul li a:hover { color: var(--peach); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.2rem 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+    }
+
+    .footer-bottom a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      transition: color 0.2s;
+    }
+    .footer-bottom a:hover { color: var(--peach); }
+
+    /* =============================
+       FLOATING WHATSAPP
+    ============================= */
+    .fab-wa {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 150;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.42);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .fab-wa:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.52);
+    }
+    .fab-wa svg { width: 26px; height: 26px; fill: white; }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========================
+       NAVIGACIJA
+  ========================= -->
+  <nav>
+    <a href="#hero" class="nav-logo">La Petite Rose 🌸</a>
+    <ul class="nav-links">
+      <li><a href="#o-nama">O nama</a></li>
+      <li><a href="#ponuda">Ponuda</a></li>
+      <li><a href="#galerija">Galerija</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Izbornik">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#o-nama" onclick="closeMenu()">O nama</a></li>
+      <li><a href="#ponuda" onclick="closeMenu()">Ponuda</a></li>
+      <li><a href="#galerija" onclick="closeMenu()">Galerija</a></li>
+      <li><a href="#kontakt" onclick="closeMenu()">Kontakt</a></li>
+    </ul>
+  </div>
+
+  <!-- ========================
+       HERO
+  ========================= -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Koprivnica &nbsp;·&nbsp; Cvjećarnica i poklon galerija</span>
+      <h1>Cvijeće s <em>dušom</em>,<br>pokloni sa srcem</h1>
+      <p class="hero-tagline">Svježe i sušeno cvijeće, pažljivo složeni buketi i posebni pokloni — sve s jednim ciljem: donijeti radost u vaš dan.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/385911819094?text=Pozdrav!%20Zainteresiran%2Fa%20sam%20za%20vašu%20ponudu." class="btn btn-primary">
+          <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.554 4.1 1.523 5.828L0 24l6.335-1.503A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.36-.213-3.76.892.953-3.667-.235-.376A9.818 9.818 0 0 1 12 2.182c5.423 0 9.818 4.395 9.818 9.818 0 5.422-4.395 9.818-9.818 9.818z"/></svg>
+          WhatsApp narudžba
+        </a>
+        <a href="#ponuda" class="btn btn-outline">Pogledaj ponudu</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Skrolaj
+    </div>
+  </section>
+
+  <!-- ========================
+       O NAMA
+  ========================= -->
+  <section class="about" id="o-nama">
+    <div class="container about-inner">
+      <div class="about-img-wrap fade-in">
+        <img src="slike/img1.jpg" alt="La Petite Rose – cvjećarnica u Koprivnici" loading="lazy" />
+      </div>
+      <div class="about-text fade-in">
+        <p class="section-label">Naša priča</p>
+        <h2 class="section-title">Malo cvijeće,<br>velika ljubav</h2>
+        <div class="section-divider"></div>
+        <p>Dobrodošli u <strong>La Petite Rose</strong> — mali kreativni prostor u srcu Koprivnice. Djelo je <strong>Darinke Šantić</strong>, koja iza svakog buketa unosi dugogodišnju ljubav prema cvijeću, prirodi i ručnom radu.</p>
+        <p>Više od cvjećarnice — spajamo prirodnu ljepotu, lokalne obrtnike i posebne poklone s jednim ciljem: svaki posjet učiniti nezaboravnim.</p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-target="500" data-suffix="+">0+</span>
+            <span class="stat-label">Zadovoljnih kupaca</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="30" data-suffix="+">0+</span>
+            <span class="stat-label">Vrsta cvijeća</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="1" data-suffix="">0</span>
+            <span class="stat-label">Godina s vama</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       PONUDA — Showcase rows
+  ========================= -->
+  <section class="ponuda" id="ponuda">
+    <div class="container">
+      <div class="ponuda-header fade-in">
+        <p class="section-label">Što nudimo</p>
+        <h2 class="section-title">Naša ponuda</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Desktop floating image preview -->
+      <div class="ponuda-preview" id="ponudaPreview">
+        <img src="" id="ponudaPreviewImg" alt="" />
+      </div>
+
+      <!-- Service rows -->
+      <div class="ponuda-rows" id="ponudaRows">
+
+        <div class="ponuda-row fade-in" data-img="slike/img2.jpg">
+          <div class="ponuda-row-inner">
+            <span class="ponuda-num">01</span>
+            <div class="ponuda-row-text">
+              <h3>Svježe cvijeće</h3>
+              <p>Buketi i aranžmani od svježeg sezonskog cvijeća, složeni s ljubavlju</p>
+            </div>
+            <span class="ponuda-row-tag">Cijela godina</span>
+            <span class="ponuda-arrow">↗</span>
+          </div>
+          <div class="ponuda-mobile-img">
+            <img src="slike/img2.jpg" alt="Svježe cvijeće" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="ponuda-row fade-in" data-img="slike/img4.jpg">
+          <div class="ponuda-row-inner">
+            <span class="ponuda-num">02</span>
+            <div class="ponuda-row-text">
+              <h3>Sušeno cvijeće</h3>
+              <p>Trajni aranžmani koji ostaju lijepi dulje od trenutka</p>
+            </div>
+            <span class="ponuda-row-tag">Trajni poklon</span>
+            <span class="ponuda-arrow">↗</span>
+          </div>
+          <div class="ponuda-mobile-img">
+            <img src="slike/img4.jpg" alt="Sušeno cvijeće" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="ponuda-row fade-in" data-img="slike/img5.jpg">
+          <div class="ponuda-row-inner">
+            <span class="ponuda-num">03</span>
+            <div class="ponuda-row-text">
+              <h3>Poklon galerija</h3>
+              <p>Nakit s cvijećem u vosku, ručne čokolade, sapuni i lokalni proizvodi</p>
+            </div>
+            <span class="ponuda-row-tag">Jedinstveno</span>
+            <span class="ponuda-arrow">↗</span>
+          </div>
+          <div class="ponuda-mobile-img">
+            <img src="slike/img5.jpg" alt="Poklon galerija" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="ponuda-row fade-in" data-img="slike/img7.jpg">
+          <div class="ponuda-row-inner">
+            <span class="ponuda-num">04</span>
+            <div class="ponuda-row-text">
+              <h3>Omatanje poklona</h3>
+              <p>Svaki poklon zaslužuje lijepo pakiranje — prepustite nam taj detalj</p>
+            </div>
+            <span class="ponuda-row-tag">Na zahtjev</span>
+            <span class="ponuda-arrow">↗</span>
+          </div>
+          <div class="ponuda-mobile-img">
+            <img src="slike/img7.jpg" alt="Omatanje poklona" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="ponuda-row fade-in" data-img="slike/img6.jpg">
+          <div class="ponuda-row-inner">
+            <span class="ponuda-num">05</span>
+            <div class="ponuda-row-text">
+              <h3>Vjenčanja &amp; Eventi</h3>
+              <p>Dekoriramo vaš poseban dan — od svadbenih buketa do punog uređenja prostora</p>
+            </div>
+            <span class="ponuda-row-tag">Cijela regija</span>
+            <span class="ponuda-arrow">↗</span>
+          </div>
+          <div class="ponuda-mobile-img">
+            <img src="slike/img6.jpg" alt="Vjenčanja i eventi" loading="lazy" />
+          </div>
+        </div>
+
+      </div><!-- /ponuda-rows -->
+    </div>
+  </section>
+
+  <!-- ========================
+       GALERIJA
+  ========================= -->
+  <section class="galerija" id="galerija">
+    <div class="container">
+      <div class="galerija-header fade-in">
+        <p class="section-label">Naši radovi</p>
+        <h2 class="section-title">Galerija</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img2.jpg')">
+          <img src="slike/img2.jpg" alt="La Petite Rose – cvijetni aranžman" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img4.jpg')">
+          <img src="slike/img4.jpg" alt="La Petite Rose – buket" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img5.jpg')">
+          <img src="slike/img5.jpg" alt="La Petite Rose – dekoracija" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img6.jpg')">
+          <img src="slike/img6.jpg" alt="La Petite Rose – sušeno cvijeće" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img7.jpg')">
+          <img src="slike/img7.jpg" alt="La Petite Rose – poklon" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img8.jpg')">
+          <img src="slike/img8.jpg" alt="La Petite Rose – cvjećarnica" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img9.jpg')">
+          <img src="slike/img9.jpg" alt="La Petite Rose – aranžman" loading="lazy" />
+        </div>
+        <div class="gallery-item fade-in" onclick="openLightbox('slike/img3.jpg')">
+          <img src="slike/img3.jpg" alt="La Petite Rose – buketi" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Zatvori">×</button>
+    <img src="" id="lightboxImg" alt="Galerija" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- ========================
+       KONTAKT
+  ========================= -->
+  <section class="kontakt" id="kontakt">
+    <div class="container kontakt-inner">
+      <div class="fade-in">
+        <p class="section-label">Posjetite nas</p>
+        <h2 class="section-title">Kontakt</h2>
+        <div class="section-divider"></div>
+
+        <div class="kontakt-item">
+          <div class="kontakt-item-icon">📍</div>
+          <div class="kontakt-item-text">
+            <strong>Adresa</strong>
+            <span>Trg bana Josipa Jelačića 3<br>48000 Koprivnica</span>
+          </div>
+        </div>
+
+        <div class="kontakt-item">
+          <div class="kontakt-item-icon">📞</div>
+          <div class="kontakt-item-text">
+            <strong>Telefon</strong>
+            <a href="tel:+385911819094">091 181 9094</a>
+          </div>
+        </div>
+
+        <div class="kontakt-item">
+          <div class="kontakt-item-icon">🕐</div>
+          <div class="kontakt-item-text">
+            <strong>Radno vrijeme</strong>
+            <div class="radno-grid">
+              <span>Pon – Pet</span><span>09:00 – 16:00</span>
+              <span>Subota</span><span>08:00 – 13:00</span>
+              <span class="muted">Nedjelja</span><span class="muted">Zatvoreno</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kontakt-cta-btns">
+          <a href="https://wa.me/385911819094?text=Pozdrav!%20Zainteresiran%2Fa%20sam%20za%20vašu%20ponudu." class="btn btn-wa">
+            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.554 4.1 1.523 5.828L0 24l6.335-1.503A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.36-.213-3.76.892.953-3.667-.235-.376A9.818 9.818 0 0 1 12 2.182c5.423 0 9.818 4.395 9.818 9.818 0 5.422-4.395 9.818-9.818 9.818z"/></svg>
+            Piši nam na WhatsApp
+          </a>
+          <a href="tel:+385911819094" class="btn btn-call">
+            <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 11 19.79 19.79 0 01.88 2.38 2 2 0 012.86.22h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.98-.98a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Nazovi nas
+          </a>
+        </div>
+      </div>
+
+      <div class="kontakt-map fade-in">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2778.0!2d16.8293!3d46.1638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4768c3b1e1c9a4b3%3A0x1234!2sTrg%20bana%20Josipa%20Jela%C4%8Di%C4%87a%203%2C%2048000%20Koprivnica!5e0!3m2!1shr!2shr!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="La Petite Rose – lokacija">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       FOOTER — Multi-column
+  ========================= -->
+  <footer>
+    <div class="footer-inner">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <span class="footer-logo">La Petite Rose</span>
+        <p>Cvjećarnica i poklon galerija sa srcem i dušom — iz Koprivnice s ljubavlju.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/darinka_la_petite_rose/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.facebook.com/p/La-petite-rose-61572024966889/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://wa.me/385911819094" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+
+      <!-- Link columns -->
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Stranica</h4>
+          <ul>
+            <li><a href="#o-nama">O nama</a></li>
+            <li><a href="#ponuda">Ponuda</a></li>
+            <li><a href="#galerija">Galerija</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Informacije</h4>
+          <ul>
+            <li><span>Trg bana J. Jelačića 3</span></li>
+            <li><span>48000 Koprivnica</span></li>
+            <li><span>Pon–Pet: 09–16h</span></li>
+            <li><span>Sub: 08–13h</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pratite nas</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/darinka_la_petite_rose/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com/p/La-petite-rose-61572024966889/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://wa.me/385911819094" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="tel:+385911819094">091 181 9094</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 La Petite Rose · Koprivnica</p>
+      <p>Izradio s ❤️ za Darinku</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/385911819094?text=Pozdrav!%20Zainteresiran%2Fa%20sam%20za%20vašu%20ponudu."
+     class="fab-wa" aria-label="Kontaktiraj nas na WhatsApp"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.112.554 4.1 1.523 5.828L0 24l6.335-1.503A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.36-.213-3.76.892.953-3.667-.235-.376A9.818 9.818 0 0 1 12 2.182c5.423 0 9.818 4.395 9.818 9.818 0 5.422-4.395 9.818-9.818 9.818z"/></svg>
+  </a>
+
+  <!-- ========================
+       JAVASCRIPT
+  ========================= -->
+  <script>
+    // Hero bg parallax load
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Stat counters — animate from 0 when section enters view
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const startTime = performance.now();
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.stat-number').forEach(animateCounter);
+          statsObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    const statsEl = document.querySelector('.about-stats');
+    if (statsEl) statsObserver.observe(statsEl);
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // ========================
+    // PONUDA — Showcase interaction
+    // ========================
+    const ponudaPreview  = document.getElementById('ponudaPreview');
+    const ponudaPreviewImg = document.getElementById('ponudaPreviewImg');
+    const ponudaRows     = document.querySelectorAll('.ponuda-row');
+
+    // Detect touch/no-hover device
+    const isTouch = () => window.matchMedia('(hover: none)').matches;
+
+    // Smooth cursor tracking (desktop only)
+    let mouseX = 0, mouseY = 0;
+    let smoothX = 0, smoothY = 0;
+
+    function animatePreview() {
+      smoothX += (mouseX - smoothX) * 0.14;
+      smoothY += (mouseY - smoothY) * 0.14;
+      ponudaPreview.style.transform =
+        `translate3d(${smoothX + 22}px, ${smoothY - 95}px, 0)`;
+      requestAnimationFrame(animatePreview);
+    }
+    animatePreview();
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    ponudaRows.forEach((row) => {
+      const imgSrc = row.dataset.img;
+
+      // Desktop: hover to show floating preview
+      row.addEventListener('mouseenter', () => {
+        if (isTouch()) return;
+        ponudaPreviewImg.src = imgSrc;
+        ponudaPreview.classList.add('visible');
+      });
+
+      row.addEventListener('mouseleave', () => {
+        if (isTouch()) return;
+        ponudaPreview.classList.remove('visible');
+      });
+
+      // Mobile: tap to expand image inline
+      row.addEventListener('click', () => {
+        if (!isTouch()) return;
+        const wasActive = row.classList.contains('active');
+        // Close all rows
+        ponudaRows.forEach(r => r.classList.remove('active'));
+        // Toggle current
+        if (!wasActive) row.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
